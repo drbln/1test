@@ -1,7 +1,0 @@
-
-eg,1234
-neoleg,1234
-admin,admin
-admin,1
-admin,ad
-admin2,2
