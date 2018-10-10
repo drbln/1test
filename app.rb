@@ -19,3 +19,7 @@ end
 get '/contacts' do
 	erb :contacts
 end
+
+get '/guitare' do
+	erb :guitare
+end
