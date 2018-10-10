@@ -23,3 +23,14 @@ end
 get '/guitare' do
 	erb :guitare
 end
+
+post '/guitare' do
+	@name = params[:name]
+	@fam = params[:fam]
+	@num = params[:num]
+	@date = params[:date]
+	record = File.open 'records/guitare.txt', 'a'
+		record.write "#{@name} #{@fam},#{@num},#{@date}\n"
+		record.close
+		erb :index
+end
