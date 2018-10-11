@@ -24,6 +24,23 @@ get '/guitare' do
 	erb :guitare
 end
 
+get '/guitare_rec' do
+	erb :guitare_rec
+end
+
+get '/login' do
+	erb :login
+end
+
+post '/login' do
+	@login = params[:login]
+	@password =params[:password]
+		if @login=="guitare" && @password=="guitare"
+			erb :guitare_rec
+		else erb :login
+		end
+end
+
 post '/guitare' do
 	@name = params[:name]
 	@fam = params[:fam]
