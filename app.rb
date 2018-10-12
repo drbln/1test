@@ -46,7 +46,7 @@ post '/guitare' do
 	@fam = params[:fam]
 	@num = params[:num]
 	@date = params[:date]
-	record = File.open 'records/guitare.txt', 'a'
+	record = File.open 'public/records/guitare.txt', 'a'
 		record.write "#{@name} #{@fam},#{@num},#{@date}\n"
 		record.close
 		erb :index
