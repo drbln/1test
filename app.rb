@@ -32,22 +32,43 @@ get '/login' do
 	erb :login
 end
 
+get '/singup' do
+  erb :singup
+end
+
+get '/vocal' do
+	erb :vocal
+end
+
 post '/login' do
 	@login = params[:login]
 	@password =params[:password]
 		if @login=="guitare" && @password=="guitare"
 			erb :guitare_rec
-		else erb :login
+		end
+		
+		if @login=="vocal" && @password=="vocal"
+			erb :vocal_rec
 		end
 end
 
-post '/guitare' do
+post '/singup' do
+	@type = params[:type]
 	@name = params[:name]
 	@fam = params[:fam]
 	@num = params[:num]
 	@date = params[:date]
-	record = File.open 'public/records/guitare.txt', 'a'
-		record.write "#{@name} #{@fam},#{@num},#{@date}\n"
-		record.close
-		erb "Вы успешно записались, спасибо"
+		if @type=="Гитара"
+			record = File.open 'public/records/guitare.txt', 'a'
+			record.write "#{@name} #{@fam},#{@num},#{@date}\n"
+			record.close
+			erb "Вы успешно записались на #{@type}, спасибо"
+		end
+		
+		if @type=="Вокал"
+			record = File.open 'public/records/vocal.txt', 'a'
+			record.write "#{@name} #{@fam},#{@num},#{@date}\n"
+			record.close
+			erb "Вы успешно записались на #{@type}, спасибо"
+		end
 end
