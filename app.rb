@@ -49,5 +49,5 @@ post '/guitare' do
 	record = File.open 'public/records/guitare.txt', 'a'
 		record.write "#{@name} #{@fam},#{@num},#{@date}\n"
 		record.close
-		erb :index
+		erb "Вы успешно записались, спасибо"
 end
