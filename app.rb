@@ -45,11 +45,11 @@ post '/login' do
 	@password =params[:password]
 		if @login=="guitare" && @password=="guitare"
 			erb :guitare_rec
+		elsif @login=="vocal" && @password=="vocal"
+			erb :vocal_rec
+		else erb :login
 		end
 		
-		if @login=="vocal" && @password=="vocal"
-			erb :vocal_rec
-		end
 end
 
 post '/singup' do
