@@ -58,6 +58,11 @@ post '/singup' do
 	@fam = params[:fam]
 	@num = params[:num]
 	@date = params[:date]
+		if @name==''
+			 @error ="Заполните все поля"
+			 return erb :singup
+		end
+		
 		if @type=="Гитара"
 			record = File.open 'public/records/guitare.txt', 'a'
 			record.write "#{@name} #{@fam},#{@num},#{@date}\n"
