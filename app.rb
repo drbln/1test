@@ -58,7 +58,7 @@ post '/singup' do
 	@fam = params[:fam]
 	@num = params[:num]
 	@date = params[:date]
-		if @name==''
+		if @name=='' or @fam=='' or @num=='' or @date==''
 			 @error ="Заполните все поля"
 			 return erb :singup
 		end
@@ -68,9 +68,7 @@ post '/singup' do
 			record.write "#{@name} #{@fam},#{@num},#{@date}\n"
 			record.close
 			erb "Вы успешно записались на #{@type}, спасибо"
-		end
-		
-		if @type=="Вокал"
+		elsif @type=="Вокал"
 			record = File.open 'public/records/vocal.txt', 'a'
 			record.write "#{@name} #{@fam},#{@num},#{@date}\n"
 			record.close
